@@ -486,10 +486,8 @@ Best Practices 96 은 Supabase 테이블이 아직 없어 발생한 콘솔 404 �
 
 ## 📄 라이선스
 
-[MIT](LICENSE). 자유롭게 포크해서 본인 이력서로 쓰세요.
+[MIT](LICENSE).
+
+자유롭게 포크해서 본인 이력서로 쓰세요.
 
 ---
-
-<p align="center">
-  <sub>스크린샷을 채우고 싶다면 <a href="docs/images/README.md">docs/images/README.md</a> 의 shot list 참고.</sub>
-</p>
