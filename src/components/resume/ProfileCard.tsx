@@ -118,13 +118,21 @@ export function ProfileCard({
             <Markdown className="rich-text mt-4 text-left">{bio}</Markdown>
           )}
 
-          {(contactSlots.length > 0 || phone) && (
+          {(contactSlots.length > 0 || phone || email) && (
             <>
               <hr className="divider my-6" />
               <ul
                 className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
                 aria-label={translate(lang, "resume.contact")}
               >
+                {email && (
+                  <ContactCard
+                    href={`mailto:${email}`}
+                    label={translate(lang, "profile.email")}
+                    value={email}
+                    Icon={Mail}
+                  />
+                )}
                 {phone && telHref && (
                   <ContactCard
                     href={telHref}
