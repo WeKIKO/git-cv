@@ -63,6 +63,7 @@
 > 개발 경험이 있으시면 [`docs/SETUP.md`](docs/SETUP.md) 만 봐도 충분합니다.
 
 **준비물**
+
 - 이메일 계정 하나
 - 컴퓨터 (macOS / Windows / Linux)
 - 약 1시간
@@ -71,16 +72,16 @@
 
 ### 전체 순서
 
-| # | 단계 | 하는 곳 |
-| --- | --- | --- |
-| 1 | GitHub 계정 만들기 | github.com |
-| 2 | 리포지토리 Fork & 이름 바꾸기 | github.com |
-| 3 | Supabase 프로젝트 만들기 | supabase.com |
-| 4 | Supabase 스키마 적용 | Supabase SQL Editor |
-| 5 | 관리자 계정 만들기 | Supabase Auth |
-| 6 | GitHub Actions 시크릿 등록 | GitHub Settings |
-| 7 | GitHub Pages 활성화 | GitHub Settings |
-| 8 | 어드민 로그인 & 내용 채우기 | 배포된 사이트 |
+| #   | 단계                          | 하는 곳             |
+| --- | ----------------------------- | ------------------- |
+| 1   | GitHub 계정 만들기            | github.com          |
+| 2   | 리포지토리 Fork & 이름 바꾸기 | github.com          |
+| 3   | Supabase 프로젝트 만들기      | supabase.com        |
+| 4   | Supabase 스키마 적용          | Supabase SQL Editor |
+| 5   | 관리자 계정 만들기            | Supabase Auth       |
+| 6   | GitHub Actions 시크릿 등록    | GitHub Settings     |
+| 7   | GitHub Pages 활성화           | GitHub Settings     |
+| 8   | 어드민 로그인 & 내용 채우기   | 배포된 사이트       |
 
 ---
 
@@ -163,11 +164,11 @@ Supabase 는 이 프로젝트의 데이터베이스 역할을 합니다. 무료 
 
 좌측 사이드바에서:
 
-- **Settings → Data API** → `Project URL` 값 (`https://xxxxxxxxxxxx.supabase.co`)
+- **Project Settings → Data API** → `Project URL` 값 (`https://xxxxxxxxxxxx.supabase.co`)
 
   ![Project URL](docs/images/06-supabase-project-url.png)
 
-- **Settings → API Keys** → `anon public` 키 (`eyJhbGciOi...` 로 시작)
+- **Project Settings → API Keys** → `anon public` 키 (`eyJhbGciOi...` 로 시작)
 
   ![anon key](docs/images/07-supabase-anon-key.png)
 
@@ -245,9 +246,9 @@ on conflict (email) do nothing;
 3. 좌측 **Secrets and variables → Actions**
 4. **New repository secret** 으로 **두 개** 등록:
 
-| Name (그대로) | Value |
-| --- | --- |
-| `NEXT_PUBLIC_SUPABASE_URL` | 3-4 의 `Project URL` |
+| Name (그대로)                   | Value                   |
+| ------------------------------- | ----------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`      | 3-4 의 `Project URL`    |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | 3-4 의 `anon public` 키 |
 
 ![GitHub Secrets](docs/images/11-github-secrets.png)
@@ -267,8 +268,6 @@ on conflict (email) do nothing;
 #### 첫 배포 실행
 
 - **방법 A (추천)** — 상단 **Actions** 탭 → 좌측 `Deploy to GitHub Pages` → 우측 **Run workflow** → 초록 **Run workflow** 버튼
-
-  ![Run workflow](docs/images/13-actions-run-workflow.png)
 
 - **방법 B** — 아무 파일이나 조금 수정해 커밋 (예: 이 README 의 한 글자)
 
@@ -299,6 +298,7 @@ Actions 탭에서 초록 체크가 뜨면 배포 성공. 2~5분 소요.
 배포 전에 내 컴퓨터에서 미리 확인하고 싶을 때.
 
 **준비**
+
 - [Node.js](https://nodejs.org) **22 이상**
 - [Git](https://git-scm.com/downloads)
 
@@ -391,6 +391,7 @@ SEO 와 "저장하면 즉시 반영" 이 정면으로 충돌합니다.
 방문자 브라우저에서 최신 데이터로 다시 맞춥니다(사람이 보는 것).
 새로 만든 프로젝트는 정적 파일이 아직 없으므로 `404.html` 이 슬러그를 읽어
 클라이언트에서 렌더하고, 어드민의 재배포 버튼이 정적 파일을 따라오게 합니다.
+
 </details>
 
 <details>
@@ -400,6 +401,7 @@ SEO 와 "저장하면 즉시 반영" 이 정면으로 충돌합니다.
 실제 방어선은 RLS 입니다 — 익명 키로는 `is_published = true` 행만 읽히고,
 쓰기는 `admins` 테이블에 등록된 이메일로 로그인해야 합니다.
 `service_role` 키는 이 프로젝트에서 쓰지 않습니다.
+
 </details>
 
 <details>
@@ -407,12 +409,14 @@ SEO 와 "저장하면 즉시 반영" 이 정면으로 충돌합니다.
 
 Supabase 이미지 변환은 유료 기능이라, 어드민이 canvas 로 WebP 변환·축소한 뒤 올립니다.
 원본 크기를 함께 저장해 공개 페이지가 로딩 전에 자리를 잡습니다 (CLS 0).
+
 </details>
 
 <details>
 <summary><strong>유튜브 iframe 은 클릭 후에 붙인다</strong></summary>
 
 보기도 전에 1MB 스크립트를 받는 게 성능 점수를 깎는 가장 쉬운 방법이라, 포스터만 먼저 보여줍니다.
+
 </details>
 
 ---
@@ -431,6 +435,7 @@ Supabase 이미지 변환은 유료 기능이라, 어드민이 canvas 로 WebP �
 <summary>Actions 로그에 <code>NEXT_PUBLIC_SUPABASE_URL is required</code> 에러.</summary>
 
 6단계 시크릿 이름을 오타 없이 정확히 입력했는지 확인. 앞뒤 공백이 붙는 경우가 흔합니다.
+
 </details>
 
 <details>
@@ -451,6 +456,7 @@ Supabase 이미지 변환은 유료 기능이라, 어드민이 canvas 로 WebP �
 <summary>Supabase 무료 티어가 정지됐다고 나옵니다.</summary>
 
 무료 프로젝트는 약 1주간 요청이 없으면 자동 일시정지됩니다. 대시보드에서 **Restore project** 로 즉시 복구. 방문자가 있으면 발생하지 않습니다.
+
 </details>
 
 ---
@@ -468,11 +474,11 @@ Supabase 이미지 변환은 유료 기능이라, 어드민이 canvas 로 WebP �
 
 Desktop, 정적 빌드 기준.
 
-| 페이지 | Performance | Accessibility | Best Practices | SEO |
-| --- | :-: | :-: | :-: | :-: |
-| `/` | **100** | **100** | 96 | **100** |
-| `/portfolio` | 99 | **100** | 96 | **100** |
-| `/projects/[slug]` | **100** | **100** | 96 | **100** |
+| 페이지             | Performance | Accessibility | Best Practices |   SEO   |
+| ------------------ | :---------: | :-----------: | :------------: | :-----: |
+| `/`                |   **100**   |    **100**    |       96       | **100** |
+| `/portfolio`       |     99      |    **100**    |       96       | **100** |
+| `/projects/[slug]` |   **100**   |    **100**    |       96       | **100** |
 
 Best Practices 96 은 Supabase 테이블이 아직 없어 발생한 콘솔 404 때문이며, `supabase/schema.sql` 을 적용하면 사라집니다.
 
