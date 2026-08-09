@@ -275,22 +275,18 @@ on conflict (email) do nothing;
 
 ### 7. GitHub Pages 활성화
 
-> [!TIP]
-> **이 리포지토리는 워크플로우가 Pages 를 자동 활성화합니다.** 별도 조작 없이 [바로 첫 배포 실행](#첫-배포-실행) 으로 넘어가도 됩니다.
-> 만약 Actions 로그에 `Get Pages site failed` 에러가 뜬다면 아래 수동 절차로 한 번만 켜주세요.
+> [!IMPORTANT]
+> **이 단계를 건너뛰면 배포가 실패합니다.**
+> Actions 로그에 `Get Pages site failed. Not Found` 또는 `Create Pages site failed. Resource not accessible by integration` 에러가 뜬다면 바로 이게 원인입니다.
+> GitHub 정책상 워크플로우 토큰으로는 Pages 를 처음 켤 수 없어서, 최초 1회는 수동으로 켜야 합니다.
 
-<details>
-<summary><strong>수동으로 켜야 할 경우</strong></summary>
-
-1. 여전히 리포지토리 **Settings**
-2. 좌측 **Pages**
+1. 리포지토리 상단 **Settings** 탭
+2. 좌측 사이드바 **Pages**
 3. **Build and deployment → Source** 를 **`GitHub Actions`** 로 변경
    > `Deploy from a branch` 가 아니라 반드시 `GitHub Actions` 입니다.
 4. 저장 버튼은 없습니다. 선택하는 순간 반영됨.
 
 ![Pages Source](docs/images/12-github-pages-source.png)
-
-</details>
 
 #### 첫 배포 실행
 
@@ -459,9 +455,10 @@ Supabase 이미지 변환은 유료 기능이라, 어드민이 canvas 로 WebP �
 </details>
 
 <details>
-<summary>Actions 로그에 <code>Get Pages site failed. Not Found</code> 에러.</summary>
+<summary>Actions 로그에 <code>Get Pages site failed</code> 또는 <code>Resource not accessible by integration</code> 에러.</summary>
 
-첫 실행에서 Pages 가 아직 켜지지 않았을 때 나옵니다. **Settings → Pages → Source** 를 `GitHub Actions` 로 바꾼 뒤 워크플로우를 재실행하세요. (이 리포는 자동 활성화 옵션이 켜져 있으므로 대개 두 번째 실행부터는 문제없습니다.)
+**7단계(GitHub Pages 활성화)를 건너뛴 상태입니다.**
+GitHub 정책상 워크플로우 토큰으로는 Pages 를 처음 켤 수 없어서, 최초 1회 **Settings → Pages → Source** 를 `GitHub Actions` 로 수동으로 바꿔줘야 합니다. 바꾼 뒤 Actions 탭에서 **Run workflow** 로 재실행하세요.
 
 </details>
 
