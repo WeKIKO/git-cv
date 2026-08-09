@@ -275,6 +275,13 @@ on conflict (email) do nothing;
 
 ### 7. GitHub Pages 활성화
 
+> [!TIP]
+> **이 리포지토리는 워크플로우가 Pages 를 자동 활성화합니다.** 별도 조작 없이 [바로 첫 배포 실행](#첫-배포-실행) 으로 넘어가도 됩니다.
+> 만약 Actions 로그에 `Get Pages site failed` 에러가 뜬다면 아래 수동 절차로 한 번만 켜주세요.
+
+<details>
+<summary><strong>수동으로 켜야 할 경우</strong></summary>
+
 1. 여전히 리포지토리 **Settings**
 2. 좌측 **Pages**
 3. **Build and deployment → Source** 를 **`GitHub Actions`** 로 변경
@@ -282,6 +289,8 @@ on conflict (email) do nothing;
 4. 저장 버튼은 없습니다. 선택하는 순간 반영됨.
 
 ![Pages Source](docs/images/12-github-pages-source.png)
+
+</details>
 
 #### 첫 배포 실행
 
@@ -445,8 +454,15 @@ Supabase 이미지 변환은 유료 기능이라, 어드민이 canvas 로 WebP �
 <summary>사이트 주소로 들어가면 404 가 뜹니다.</summary>
 
 - 리포지토리 이름이 정확히 `<본인아이디>.github.io` 인지 확인 (대소문자 포함).
-- **Settings → Pages** 에서 Source 가 `GitHub Actions` 인지 확인.
+- **Settings → Pages** 에서 Source 가 `GitHub Actions` 인지 확인. (첫 워크플로우 실행 시 자동 활성화되지만, 안 되었다면 수동으로.)
 - **Actions** 탭에서 최근 워크플로우가 초록색으로 성공했는지 확인. 실패 시 로그로 원인 파악.
+</details>
+
+<details>
+<summary>Actions 로그에 <code>Get Pages site failed. Not Found</code> 에러.</summary>
+
+첫 실행에서 Pages 가 아직 켜지지 않았을 때 나옵니다. **Settings → Pages → Source** 를 `GitHub Actions` 로 바꾼 뒤 워크플로우를 재실행하세요. (이 리포는 자동 활성화 옵션이 켜져 있으므로 대개 두 번째 실행부터는 문제없습니다.)
+
 </details>
 
 <details>
