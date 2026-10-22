@@ -14,6 +14,8 @@ import { useLang } from "@/components/providers/AppProviders";
 import { GithubIcon } from "@/components/ui/BrandIcons";
 import { SmartImage } from "@/components/ui/SmartImage";
 import { TagList } from "@/components/ui/TagList";
+import { ProjectPlatformLinks } from "./ProjectPlatformLinks";
+import { getPlatformLinks } from "@/lib/projectPlatforms";
 import { BlockRenderer } from "./BlockRenderer";
 import { FloatingToc } from "./FloatingToc";
 import { formatDateRange, tr } from "@/lib/i18n";
@@ -75,6 +77,7 @@ export function ProjectDetail({
   // worse than no button at all.
   const repoUrl = safeExternalUrl(project.repo_url);
   const demoUrl = safeExternalUrl(project.demo_url);
+  const hasPlatformLinks = getPlatformLinks(project).length > 0;
 
   return (
     <article className={embedded ? "" : "container-page"}>
@@ -118,7 +121,7 @@ export function ProjectDetail({
       )}
 
       {(period || role || project.team_size || project.tags.length > 0 ||
-        repoUrl || demoUrl) && (
+        repoUrl || demoUrl || hasPlatformLinks) && (
         <section className="card mt-5 flex flex-col gap-3 p-4 sm:p-5">
           <div className="grid gap-3 sm:grid-cols-2">
             {period && (
@@ -149,7 +152,7 @@ export function ProjectDetail({
             </div>
           )}
 
-          {(repoUrl || demoUrl) && (
+          {(repoUrl || demoUrl || hasPlatformLinks) && (
             <div className="flex flex-wrap gap-2 border-t border-border pt-3">
               {repoUrl && (
                 <a
@@ -163,6 +166,7 @@ export function ProjectDetail({
                   <ArrowUpRight className="size-3" aria-hidden="true" />
                 </a>
               )}
+              <ProjectPlatformLinks project={project} />
               {demoUrl && (
                 <a
                   href={demoUrl}

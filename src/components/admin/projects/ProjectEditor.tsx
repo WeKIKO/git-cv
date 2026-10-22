@@ -14,6 +14,7 @@ import { ImageUploader } from "../ui/ImageUploader";
 import { SaveBar } from "../ui/SaveBar";
 import { TagInput } from "../ui/TagInput";
 import { BLOCK_SPECS, BlockCard } from "./BlockEditor";
+import { PROJECT_PLATFORMS } from "@/lib/projectPlatforms";
 import { ProjectDetail } from "@/components/project/ProjectDetail";
 import { getSupabaseBrowser } from "@/lib/supabase";
 import { useSaver } from "@/lib/admin/useSaver";
@@ -370,6 +371,23 @@ export function ProjectEditor() {
                 value={project.demo_url ?? ""}
                 onChange={(v) => set("demo_url", v || null)}
               />
+            </div>
+          </section>
+
+          <section className="card flex flex-col gap-4 p-4 sm:p-5">
+            <h2 className="text-sm font-bold">스토어 · 배포 링크</h2>
+            <p className="-mt-2 text-2xs text-fg-subtle">
+              URL을 입력한 플랫폼만 카드의 스킬 아래와 상세 페이지의 GitHub 옆에 표시됩니다. 비우면 버튼이 사라집니다.
+            </p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {PROJECT_PLATFORMS.map(({ key, label, destination }) => (
+                <UrlInput
+                  key={key}
+                  label={`${label} · ${destination}`}
+                  value={project[key] ?? ""}
+                  onChange={(value) => set(key, value || null)}
+                />
+              ))}
             </div>
           </section>
 

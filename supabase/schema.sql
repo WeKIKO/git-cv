@@ -221,6 +221,14 @@ create table if not exists public.projects (
   updated_at    timestamptz not null default now()
 );
 
+-- Optional store / deployment links. Existing projects remain unchanged.
+alter table public.projects add column if not exists android_url text;
+alter table public.projects add column if not exists ios_url text;
+alter table public.projects add column if not exists ipad_url text;
+alter table public.projects add column if not exists macos_url text;
+alter table public.projects add column if not exists windows_url text;
+alter table public.projects add column if not exists web_url text;
+
 create index if not exists projects_published_idx
   on public.projects (is_published, sort_order desc, period_start desc);
 

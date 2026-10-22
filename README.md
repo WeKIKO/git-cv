@@ -522,3 +522,14 @@ Best Practices 96 은 Supabase 테이블이 아직 없어 발생한 콘솔 404 �
 자유롭게 포크해서 본인 이력서로 쓰세요.
 
 ---
+
+### 포트폴리오 스토어 · 배포 링크
+
+관리자 → 프로젝트 편집 → **스토어 · 배포 링크**에서 Android, iOS, iPad,
+macOS, Windows, Web URL을 각각 입력합니다. 유효한 URL이 있는 플랫폼만
+카드의 스킬 아래와 상세 페이지의 GitHub 옆에 표시되며, 새 탭으로 열립니다.
+URL을 지우고 저장하면 버튼도 사라집니다. 기존 라이브 데모 링크는 별도로 유지됩니다.
+
+기존 Supabase DB에는 배포 전에
+[`supabase/migrations/20261022_project_platform_urls.sql`](supabase/migrations/20261022_project_platform_urls.sql)을
+SQL Editor에서 실행하세요. 새로 설치할 때는 `supabase/schema.sql`에 포함되어 있습니다.

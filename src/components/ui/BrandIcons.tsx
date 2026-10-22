@@ -36,3 +36,27 @@ export function GithubIcon(props: SVGProps<SVGSVGElement>) {
 export function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
   return <Brand path={LINKEDIN_PATH} {...props} />;
 }
+
+export function GooglePlayIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M3 2.5 13 12 3 21.5Z" fill="#4285F4" />
+      <path d="m3 2.5 12.5 7.1L13 12Z" fill="#34A853" />
+      <path d="M13 12 15.5 14.4 3 21.5Z" fill="#EA4335" />
+      <path d="m15.5 9.6 3.1 1.8c.5.3.5.9 0 1.2l-3.1 1.8L13 12Z" fill="#FBBC04" />
+    </svg>
+  );
+}
+
+export function AppStoreIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <rect width="24" height="24" rx="5" fill="#087CFA" />
+      <path d="m10 5 2 3m2-3L7.5 16M5 16h10m-.5-5 4 8M6 19l.5-1" stroke="white" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function WindowsIcon(props: SVGProps<SVGSVGElement>) {
+  return <Brand path="M2 3h9v8H2zm11 0h9v8h-9zM2 13h9v8H2zm11 0h9v8h-9z" {...props} />;
+}

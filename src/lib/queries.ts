@@ -45,6 +45,7 @@ export function isFreshInstall(profile: Profile): boolean {
 
 const PROJECT_COLUMNS =
   "id,slug,title_ko,title_en,summary_ko,summary_en,thumbnail_url,cover_url,tags," +
+  "android_url,ios_url,ipad_url,macos_url,windows_url,web_url," +
   "category_ko,category_en,repo_url,demo_url,period_start,period_end,is_ongoing," +
   "role_ko,role_en,team_size,sort_order,is_published,is_featured";
 

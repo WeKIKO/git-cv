@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowUpRight, Image as ImageIcon, Star } from "lucide-react";
 import { useLang } from "@/components/providers/AppProviders";
 import { SmartImage } from "@/components/ui/SmartImage";
+import { ProjectPlatformLinks } from "@/components/project/ProjectPlatformLinks";
 import { TagList } from "@/components/ui/TagList";
 import { formatDateRange, tr } from "@/lib/i18n";
 import { routes } from "@/lib/site";
@@ -40,10 +41,7 @@ export function ProjectCard({
 
   return (
     <li className="h-full">
-      <Link
-        href={routes.project(project.slug)}
-        className="card card-interactive group flex h-full flex-col overflow-hidden focus-visible:outline-offset-4"
-      >
+      <article className="card card-interactive group relative isolate flex h-full flex-col overflow-hidden">
         <div className="relative aspect-[16/10] overflow-hidden bg-surface-sunken">
           {project.thumbnail_url ? (
             <SmartImage
@@ -89,7 +87,12 @@ export function ProjectCard({
           )}
 
           <h3 className="text-base font-bold leading-snug transition-colors group-hover:text-accent">
-            {title}
+            <Link
+              href={routes.project(project.slug)}
+              className="after:absolute after:inset-0 focus-visible:outline-none focus-visible:after:rounded-[var(--radius-card)] focus-visible:after:outline-2 focus-visible:after:outline-accent"
+            >
+              {title}
+            </Link>
           </h3>
 
           {summary && (
@@ -97,8 +100,9 @@ export function ProjectCard({
           )}
 
           <TagList tags={project.tags} max={5} className="mt-auto pt-2" />
+          <ProjectPlatformLinks project={project} className="relative z-10 mt-2 flex flex-wrap gap-2" />
         </div>
-      </Link>
+      </article>
     </li>
   );
 }

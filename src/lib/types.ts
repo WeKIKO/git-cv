@@ -163,6 +163,13 @@ export interface Project {
   category_en: string | null;
   repo_url: string | null;
   demo_url: string | null;
+  android_url?: string | null;
+  ios_url?: string | null;
+  ipad_url?: string | null;
+  macos_url?: string | null;
+  windows_url?: string | null;
+  web_url?: string | null;
+
   period_start: string | null;
   period_end: string | null;
   is_ongoing: boolean;
